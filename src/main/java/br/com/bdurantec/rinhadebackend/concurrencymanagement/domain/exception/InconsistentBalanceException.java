@@ -1,16 +1,14 @@
 package br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.exception;
 
-import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.web.server.ResponseStatusException;
 
-@Getter
-public class InconsistentBalanceException extends RuntimeException {
+public class InconsistentBalanceException extends ResponseStatusException {
 	
-	private final String message;
-	private final HttpStatusCode httpStatusCode = HttpStatus.UNPROCESSABLE_ENTITY;
+	private static final HttpStatusCode httpStatusCode = HttpStatus.UNPROCESSABLE_ENTITY;
 	
 	public InconsistentBalanceException(String message) {
-		this.message = message;
+		super(httpStatusCode, message);
 	}
 }
