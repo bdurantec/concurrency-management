@@ -1,8 +1,10 @@
 br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\model\Customer.class
+br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\exception\InconsistentBalanceException.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\service\impl\TransactionServiceImpl.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\application\exception\GlobalExceptionHandler.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\model\Transaction.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\application\mapper\TransactionMapperImpl.class
+br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\exception\CustomerNotFoundException.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\application\dto\request\CustomerTransactionRequest.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\repository\CustomerRepository.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\service\TransactionService.class
@@ -13,6 +15,7 @@ br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\mapper\CustomerMappe
 br\com\bdurantec\rinhadebackend\concurrencymanagement\application\controller\CustomerController.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\mapper\CustomerMapperImpl.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\ConcurrencyManagementApplication.class
+br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\enums\TransactionTypeEnum.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\repository\impl\CustomerRepositoryImpl.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\application\dto\response\CustomerTransactionResponse.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\entity\CustomerEntity.class

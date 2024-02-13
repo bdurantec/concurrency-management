@@ -3,13 +3,16 @@ C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\application\dto\request\CustomerTransactionRequest.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\repository\CustomerRepository.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\service\impl\TransactionServiceImpl.java
+C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\exception\CustomerNotFoundException.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\model\Transaction.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\repository\impl\CustomerRepositoryImpl.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\application\exception\GlobalExceptionHandler.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\model\TransactionResult.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\entity\CustomerEntity.java
+C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\exception\InconsistentBalanceException.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\model\Customer.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\mapper\CustomerMapper.java
+C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\enums\TransactionTypeEnum.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\application\controller\CustomerController.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\application\dto\response\CustomerTransactionResponse.java
 C:\Users\Iara\repositories\concurrency-management\src\main\java\br\com\bdurantec\rinhadebackend\concurrencymanagement\ConcurrencyManagementApplication.java

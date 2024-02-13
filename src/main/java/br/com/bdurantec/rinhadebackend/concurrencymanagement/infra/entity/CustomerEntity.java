@@ -1,6 +1,7 @@
 package br.com.bdurantec.rinhadebackend.concurrencymanagement.infra.entity;
 
 import jakarta.persistence.*;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tb_customers")
@@ -13,8 +14,9 @@ public class CustomerEntity {
 	@Column(name = "limit_balance")
 	private final Long limitBalance;
 	
+	@Setter
 	@Column(name = "initial_balance")
-	private final Long initialBalance;
+	private Long initialBalance;
 	
 	public CustomerEntity(Long limitBalance, Long initialBalance) {
 		this.limitBalance = limitBalance;

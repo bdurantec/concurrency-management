@@ -1,8 +1,8 @@
 package br.com.bdurantec.rinhadebackend.concurrencymanagement.infra.repository.impl;
 
+import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.exception.CustomerNotFoundException;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.model.Customer;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.repository.CustomerRepository;
-import br.com.bdurantec.rinhadebackend.concurrencymanagement.infra.entity.CustomerEntity;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.infra.mapper.CustomerMapper;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.infra.mapper.CustomerMapperImpl;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.infra.repository.CustomerJpaRepository;
@@ -21,7 +21,14 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	
 	@Override
 	public Customer findCustomer(Integer clientId) {
-		CustomerEntity customerEntity = customerJpaRepository.findById(clientId).orElseThrow();
+		var customerEntity = customerJpaRepository.findById(clientId)
+				                     .orElseThrow(CustomerNotFoundException::new);
+		return mapper.toModel(customerEntity);
+	}
+	
+	@Override
+	public Customer updateCustomer(Customer customer) {
+		var customerEntity = customerJpaRepository.saveAndFlush(mapper.toEntity(customer));
 		return mapper.toModel(customerEntity);
 	}
 	

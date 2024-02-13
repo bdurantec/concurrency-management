@@ -1,6 +1,9 @@
 package br.com.bdurantec.rinhadebackend.concurrencymanagement.application.dto.request;
 
+import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.enums.TransactionTypeEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 
@@ -19,9 +22,11 @@ public class CustomerTransactionRequest implements Serializable {
 	
 	@JsonProperty("tipo")
 	@NotNull
-	private final String transactionType;
+	private final TransactionTypeEnum transactionType;
 	
 	@JsonProperty("descricao")
 	@NotNull
+	@Min(1)
+	@Max(10)
 	private final String description;
 }

@@ -5,4 +5,5 @@ import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.model.Custom
 public interface CustomerRepository {
 	
 	Customer findCustomer(Integer clientId);
+	Customer updateCustomer(Customer customer);
 }
