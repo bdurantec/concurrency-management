@@ -8,7 +8,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-13T11:52:22-0300",
+    date = "2024-02-13T12:20:40-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Oracle Corporation)"
 )
 public class TransactionMapperImpl implements TransactionMapper {
@@ -19,15 +19,11 @@ public class TransactionMapperImpl implements TransactionMapper {
             return null;
         }
 
-        Long value = null;
-        String type = null;
+        Long valueInCents = null;
+        String transactionType = null;
         String description = null;
 
-        value = customerTransactionRequest.value();
-        type = customerTransactionRequest.type();
-        description = customerTransactionRequest.description();
-
-        Transaction transaction = new Transaction( value, type, description );
+        Transaction transaction = new Transaction( valueInCents, transactionType, description );
 
         return transaction;
     }

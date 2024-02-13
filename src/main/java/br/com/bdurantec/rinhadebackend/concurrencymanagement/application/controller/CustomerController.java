@@ -5,6 +5,8 @@ import br.com.bdurantec.rinhadebackend.concurrencymanagement.application.dto.res
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.application.mapper.TransactionMapper;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.application.mapper.TransactionMapperImpl;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.service.TransactionService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +26,8 @@ public class CustomerController {
 	
 	@PostMapping("/{id}/transacoes")
 	public ResponseEntity<CustomerTransactionResponse> postTransactions(
-			@PathVariable("id") String customerId,
-			@RequestBody CustomerTransactionRequest request
+			@NotBlank @PathVariable("id") Integer customerId,
+			@Valid @RequestBody CustomerTransactionRequest request
 	) {
 		var transactionResult = transactionService.performsTransaction(customerId, mapper.toModel(request));
 		return ResponseEntity.ok(mapper.toResponse(transactionResult));

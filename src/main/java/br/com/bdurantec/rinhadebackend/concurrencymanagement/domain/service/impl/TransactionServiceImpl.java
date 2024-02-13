@@ -14,7 +14,7 @@ public class TransactionServiceImpl implements TransactionService {
 	private final CustomerRepository customerRepository;
 	
 	@Override
-	public Customer performsTransaction(String customerId, Transaction transaction) {
+	public Customer performsTransaction(Integer customerId, Transaction transaction) {
 		return customerRepository.findCustomer(customerId);
 	}
 	

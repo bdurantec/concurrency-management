@@ -8,9 +8,9 @@ br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\repository\Customer
 br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\service\TransactionService.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\model\TransactionResult.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\application\mapper\TransactionMapper.class
+br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\repository\CustomerJpaRepository.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\mapper\CustomerMapper.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\application\controller\CustomerController.class
-br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\repository\CustomerJpa.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\mapper\CustomerMapperImpl.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\ConcurrencyManagementApplication.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\repository\impl\CustomerRepositoryImpl.class

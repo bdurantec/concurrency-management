@@ -20,8 +20,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	}
 	
 	@Override
-	public Customer findCustomer(String clientId) {
-		CustomerEntity customerEntity = customerJpaRepository.findById(Integer.parseInt(clientId)).orElseThrow();
+	public Customer findCustomer(Integer clientId) {
+		CustomerEntity customerEntity = customerJpaRepository.findById(clientId).orElseThrow();
 		return mapper.toModel(customerEntity);
 	}
 	
