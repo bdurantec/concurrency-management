@@ -1,8 +1,8 @@
 package br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.enums;
 
 public enum TransactionTypeEnum {
-	CREDIT("C"),
-	DEBIT("D");
+	C("CREDIT"),
+	D("DEBIT");
 	
 	private final String type;
 	

@@ -20,7 +20,7 @@ public class TransactionServiceImpl implements TransactionService {
 		Customer customer = customerRepository.findCustomer(customerId);
 		var newBalance = customer.getBalance() - transaction.valueInCents();
 		
-		if (TransactionTypeEnum.DEBIT.getValue().equals(transaction.type())) {
+		if (TransactionTypeEnum.D.getValue().equals(transaction.type())) {
 			if (newBalance < customer.getLimit()) {
 				throw new InconsistentBalanceException("The customer has no limit available to carry out the transaction");
 			}

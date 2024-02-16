@@ -26,7 +26,7 @@ public class CustomerController {
 	
 	@PostMapping("/{id}/transacoes")
 	public ResponseEntity<CustomerTransactionResponse> postTransactions(
-			@NotBlank @PathVariable("id") Integer customerId,
+			@PathVariable("id") Integer customerId,
 			@Valid @RequestBody CustomerTransactionRequest request
 	) {
 		var transactionResult = transactionService.performsTransaction(customerId, mapper.toModel(request));
