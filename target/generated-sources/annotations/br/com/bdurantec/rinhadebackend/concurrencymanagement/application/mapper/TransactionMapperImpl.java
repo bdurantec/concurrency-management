@@ -2,13 +2,14 @@ package br.com.bdurantec.rinhadebackend.concurrencymanagement.application.mapper
 
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.application.dto.request.CustomerTransactionRequest;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.application.dto.response.CustomerTransactionResponse;
+import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.enums.TransactionTypeEnum;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.model.Customer;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.model.Transaction;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-16T20:57:47-0300",
+    date = "2024-02-16T21:40:00-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
 )
 public class TransactionMapperImpl implements TransactionMapper {
@@ -20,7 +21,7 @@ public class TransactionMapperImpl implements TransactionMapper {
         }
 
         Long valueInCents = null;
-        String type = null;
+        TransactionTypeEnum type = null;
         String description = null;
 
         Transaction transaction = new Transaction( valueInCents, type, description );

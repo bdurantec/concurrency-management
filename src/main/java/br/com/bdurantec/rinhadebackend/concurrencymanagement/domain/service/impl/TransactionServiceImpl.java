@@ -12,22 +12,24 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Component
 public class TransactionServiceImpl implements TransactionService {
-	
-	private final CustomerRepository customerRepository;
-	
-	@Override
-	public Customer performsTransaction(Integer customerId, Transaction transaction) {
-		Customer customer = customerRepository.findCustomer(customerId);
-		var newBalance = customer.getBalance() - transaction.valueInCents();
-		
-		if (TransactionTypeEnum.D.getValue().equals(transaction.type())) {
-			if (newBalance < customer.getLimit()) {
-				throw new InconsistentBalanceException("The customer has no limit available to carry out the transaction");
-			}
-		}
-		
-		customer.setBalance(newBalance);
-		return customerRepository.updateCustomer(customer);
-	}
-	
+
+  private final CustomerRepository customerRepository;
+
+  @Override
+  public Customer performsTransaction(Integer customerId, Transaction transaction) {
+    Customer customer = customerRepository.findCustomer(customerId);
+
+    long newBalance = customer.getBalance() - transaction.valueInCents();
+
+    if (TransactionTypeEnum.D.equals(transaction.type())) {
+      long limitNegative = customer.getLimit() * -1L;
+      if (newBalance < limitNegative) {
+        throw new InconsistentBalanceException("The customer has no limit available to carry out the transaction");
+      }
+    }
+
+    customer.setBalance(newBalance);
+    return customerRepository.updateCustomer(customer);
+  }
+
 }

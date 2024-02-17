@@ -10,26 +10,26 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustomerRepositoryImpl implements CustomerRepository {
-	
-	private final CustomerJpaRepository customerJpaRepository;
-	private final CustomerMapper mapper;
-	
-	public CustomerRepositoryImpl(CustomerJpaRepository customerJpaRepository) {
-		this.customerJpaRepository = customerJpaRepository;
-		this.mapper = new CustomerMapperImpl();
-	}
-	
-	@Override
-	public Customer findCustomer(Integer clientId) {
-		var customerEntity = customerJpaRepository.findById(clientId)
-				                     .orElseThrow(CustomerNotFoundException::new);
-		return mapper.toModel(customerEntity);
-	}
-	
-	@Override
-	public Customer updateCustomer(Customer customer) {
-		var customerEntity = customerJpaRepository.saveAndFlush(mapper.toEntity(customer));
-		return mapper.toModel(customerEntity);
-	}
-	
+
+  private final CustomerJpaRepository jpaRepository;
+  private final CustomerMapper mapper;
+
+  public CustomerRepositoryImpl(CustomerJpaRepository jpaRepository) {
+    this.jpaRepository = jpaRepository;
+    this.mapper = new CustomerMapperImpl();
+  }
+
+  @Override
+  public Customer findCustomer(Integer clientId) {
+    var customerEntity = jpaRepository.findById(clientId)
+        .orElseThrow(CustomerNotFoundException::new);
+    return mapper.toModel(customerEntity);
+  }
+
+  @Override
+  public Customer updateCustomer(Customer customer) {
+    var customerEntity = jpaRepository.save(mapper.toEntity(customer));
+    return mapper.toModel(customerEntity);
+  }
+
 }
