@@ -27,7 +27,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
   }
 
   @Override
-  public Customer updateCustomerBalance(Integer customerId, Customer customer) {
+  public Customer updateCustomer(Integer customerId, Customer customer) {
     var customerEntity = mapper.toEntity(customer);
     customerEntity.setCustomerId(customerId);
     return mapper.toModel(jpaRepository.save(customerEntity));

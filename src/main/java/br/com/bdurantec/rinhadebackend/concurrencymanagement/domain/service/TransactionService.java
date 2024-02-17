@@ -5,5 +5,5 @@ import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.model.Transa
 
 public interface TransactionService {
 	
-	Customer performsTransaction(Integer customerId, Transaction transaction);
+	Customer doTransaction(Integer customerId, Transaction transaction);
 }

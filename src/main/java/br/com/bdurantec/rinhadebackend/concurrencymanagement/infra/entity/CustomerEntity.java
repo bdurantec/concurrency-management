@@ -4,28 +4,34 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Entity
 @Table(name = "tb_customers")
 public class CustomerEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @Setter
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Integer customerId;
 
-  @Column(name = "limit_balance")
+  @Column(name = "limit_balance", nullable = false)
   private Long limitBalance;
 
   @Setter
-  @Column(name = "initial_balance")
-  private Long initialBalance;
+  @Column(name = "balance", nullable = false)
+  private Long balance;
+
+  @OneToMany(mappedBy = "customer")
+  @Column(name = "transactions", nullable = false)
+  private List<TransactionEntity> transactions;
 
   public CustomerEntity() {
   }
 
-  public CustomerEntity(Long limitBalance, Long initialBalance) {
+  public CustomerEntity(Long limitBalance, Long balance) {
     this.limitBalance = limitBalance;
-    this.initialBalance = initialBalance;
+    this.balance = balance;
   }
 }

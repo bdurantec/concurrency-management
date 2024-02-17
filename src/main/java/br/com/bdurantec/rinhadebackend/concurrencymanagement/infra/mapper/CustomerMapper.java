@@ -9,7 +9,6 @@ import org.mapstruct.Mapping;
 public interface CustomerMapper {
 
   @Mapping(source = "limitBalance", target = "limit")
-  @Mapping(source = "initialBalance", target = "balance")
   Customer toModel(CustomerEntity customerEntity);
 
   default CustomerEntity toEntity(Customer customer) {
