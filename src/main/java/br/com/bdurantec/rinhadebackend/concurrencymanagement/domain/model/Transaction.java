@@ -1,8 +1,10 @@
 package br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.model;
 
+import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.enums.TransactionTypeEnum;
+
 public record Transaction(
-		Long value,
-		String type,
-		String description
+    Long valueInCents,
+    TransactionTypeEnum transactionType,
+    String description
 ) {
 }

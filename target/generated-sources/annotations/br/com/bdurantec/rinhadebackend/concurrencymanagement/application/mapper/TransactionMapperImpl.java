@@ -2,14 +2,15 @@ package br.com.bdurantec.rinhadebackend.concurrencymanagement.application.mapper
 
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.application.dto.request.CustomerTransactionRequest;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.application.dto.response.CustomerTransactionResponse;
+import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.enums.TransactionTypeEnum;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.model.Customer;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.model.Transaction;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-13T11:52:22-0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Oracle Corporation)"
+    date = "2024-02-16T23:55:24-0300",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
 )
 public class TransactionMapperImpl implements TransactionMapper {
 
@@ -19,15 +20,15 @@ public class TransactionMapperImpl implements TransactionMapper {
             return null;
         }
 
-        Long value = null;
-        String type = null;
+        Long valueInCents = null;
+        TransactionTypeEnum transactionType = null;
         String description = null;
 
-        value = customerTransactionRequest.value();
-        type = customerTransactionRequest.type();
-        description = customerTransactionRequest.description();
+        valueInCents = customerTransactionRequest.getValueInCents();
+        transactionType = customerTransactionRequest.getTransactionType();
+        description = customerTransactionRequest.getDescription();
 
-        Transaction transaction = new Transaction( value, type, description );
+        Transaction transaction = new Transaction( valueInCents, transactionType, description );
 
         return transaction;
     }
@@ -41,8 +42,8 @@ public class TransactionMapperImpl implements TransactionMapper {
         Long limit = null;
         Long balance = null;
 
-        limit = customer.limit();
-        balance = customer.balance();
+        limit = customer.getLimit();
+        balance = customer.getBalance();
 
         CustomerTransactionResponse customerTransactionResponse = new CustomerTransactionResponse( limit, balance );
 
