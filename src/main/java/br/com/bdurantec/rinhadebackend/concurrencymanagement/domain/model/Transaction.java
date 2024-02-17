@@ -4,7 +4,7 @@ import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.enums.Transa
 
 public record Transaction(
     Long valueInCents,
-    TransactionTypeEnum type,
+    TransactionTypeEnum transactionType,
     String description
 ) {
 }

@@ -20,16 +20,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
   }
 
   @Override
-  public Customer findCustomer(Integer clientId) {
-    var customerEntity = jpaRepository.findById(clientId)
+  public Customer findCustomer(Integer customerId) {
+    var customerEntity = jpaRepository.findById(customerId)
         .orElseThrow(CustomerNotFoundException::new);
     return mapper.toModel(customerEntity);
   }
 
   @Override
-  public Customer updateCustomer(Customer customer) {
-    var customerEntity = jpaRepository.save(mapper.toEntity(customer));
-    return mapper.toModel(customerEntity);
+  public Customer updateCustomerBalance(Integer customerId, Customer customer) {
+    var customerEntity = mapper.toEntity(customer);
+    customerEntity.setCustomerId(customerId);
+    return mapper.toModel(jpaRepository.save(customerEntity));
   }
 
 }

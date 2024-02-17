@@ -17,19 +17,19 @@ public class TransactionServiceImpl implements TransactionService {
 
   @Override
   public Customer performsTransaction(Integer customerId, Transaction transaction) {
-    Customer customer = customerRepository.findCustomer(customerId);
+    var customer = customerRepository.findCustomer(customerId);
 
-    long newBalance = customer.getBalance() - transaction.valueInCents();
+    var newBalance = customer.getBalance() - transaction.valueInCents();
 
-    if (TransactionTypeEnum.D.equals(transaction.type())) {
-      long limitNegative = customer.getLimit() * -1L;
+    if (TransactionTypeEnum.D.equals(transaction.transactionType())) {
+      var limitNegative = customer.getLimit() * -1L;
       if (newBalance < limitNegative) {
         throw new InconsistentBalanceException("The customer has no limit available to carry out the transaction");
       }
     }
 
     customer.setBalance(newBalance);
-    return customerRepository.updateCustomer(customer);
+    return customerRepository.updateCustomerBalance(customerId, customer);
   }
 
 }

@@ -31,7 +31,7 @@ class TransactionServiceImplTest {
     var customer = new Customer(3000L, 1000L);
 
     when(customerRepository.findCustomer(customerId)).thenReturn(customer);
-    when(customerRepository.updateCustomer(customer)).thenReturn(customer);
+    when(customerRepository.updateCustomerBalance(customerId, customer)).thenReturn(customer);
 
     Customer customerResponse = transactionService.performsTransaction(customerId, transaction);
 
