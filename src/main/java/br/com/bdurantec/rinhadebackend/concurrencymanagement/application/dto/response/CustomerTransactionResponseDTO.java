@@ -2,7 +2,7 @@ package br.com.bdurantec.rinhadebackend.concurrencymanagement.application.dto.re
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record CustomerTransactionResponse(
+public record CustomerTransactionResponseDTO(
 		@JsonProperty("limite")
 		Long limit,
 		@JsonProperty("saldo")

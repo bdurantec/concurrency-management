@@ -13,10 +13,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDateTime;
+
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class TransactionServiceImplTest {
+class TransactionDTOServiceImplTest {
 
   @InjectMocks
   TransactionServiceImpl transactionService;
@@ -27,13 +29,13 @@ class TransactionServiceImplTest {
   @Test
   void should_doDebitTransaction_when_CustomersFinalBalanceIsGreaterThanTheAvailableLimit() {
     var customerId = 1;
-    var transaction = new Transaction(1000L, TransactionTypeEnum.valueOf("D"), "Something");
+    var transaction = new Transaction(1000L, TransactionTypeEnum.valueOf("D"), "Something", LocalDateTime.now());
     var customer = new Customer(3000L, 1000L);
 
     when(customerRepository.findCustomer(customerId)).thenReturn(customer);
-    when(customerRepository.updateCustomerBalance(customerId, customer)).thenReturn(customer);
+    when(customerRepository.updateCustomer(customerId, customer)).thenReturn(customer);
 
-    Customer customerResponse = transactionService.performsTransaction(customerId, transaction);
+    Customer customerResponse = transactionService.doTransaction(customerId, transaction);
 
     Assertions.assertEquals(2000L, customerResponse.getBalance());
     Assertions.assertEquals(1000L, customerResponse.getLimit());
@@ -43,13 +45,13 @@ class TransactionServiceImplTest {
   @Test
   void should_throwInconsistentBalanceException_when_debitRequestWouldLeaveTheBalanceLessThanTheLimit() {
     var customerId = 1;
-    var transaction = new Transaction(4000L, TransactionTypeEnum.valueOf("D"), "Something");
+    var transaction = new Transaction(4000L, TransactionTypeEnum.valueOf("D"), "Something", LocalDateTime.now());
     var customer = new Customer(1000L, 1000L);
 
     when(customerRepository.findCustomer(customerId)).thenReturn(customer);
 
     Assertions.assertThrows(InconsistentBalanceException.class,
-        () -> transactionService.performsTransaction(customerId, transaction),
+        () -> transactionService.doTransaction(customerId, transaction),
         "Throws InconsistentBalanceException");
 
   }

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
-public class ErrorResponse {
+public class ErrorResponseDTO {
 	
 	@JsonProperty("mensagem")
 	private final String message;
@@ -18,7 +18,7 @@ public class ErrorResponse {
 	@JsonProperty("trace")
 	private final String traceId;
 	
-	public ErrorResponse(String message, Integer statusCode) {
+	public ErrorResponseDTO(String message, Integer statusCode) {
 		this.message = message;
 		this.statusCode = statusCode;
 		this.localDateTime = LocalDateTime.now();

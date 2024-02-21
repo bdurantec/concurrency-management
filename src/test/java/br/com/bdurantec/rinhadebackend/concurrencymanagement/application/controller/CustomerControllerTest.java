@@ -41,7 +41,7 @@ class CustomerControllerTest {
     String json = "{\"valor\": 100, \"tipo\": \"C\", \"descricao\": \"Something\"}";
     var customer = new Customer(1000L, 1000L);
 
-    when(transactionService.performsTransaction(anyInt(), any(Transaction.class))).thenReturn(customer);
+    when(transactionService.doTransaction(anyInt(), any(Transaction.class))).thenReturn(customer);
 
     mockMvc.perform(post("/v1/clientes/{id}/transacoes", customerId)
             .contentType("application/json")

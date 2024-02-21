@@ -1,16 +1,12 @@
 package br.com.bdurantec.rinhadebackend.concurrencymanagement.infra.mapper;
 
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.enums.TransactionTypeEnum;
-import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.model.Customer;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.domain.model.Transaction;
-import br.com.bdurantec.rinhadebackend.concurrencymanagement.infra.entity.CustomerEntity;
 import br.com.bdurantec.rinhadebackend.concurrencymanagement.infra.entity.TransactionEntity;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import javax.annotation.processing.Generated;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeConstants;
@@ -22,11 +18,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
     date = "2024-02-20T23:16:34-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Oracle Corporation)"
 )
-public class CustomerMapperImpl implements CustomerMapper {
+public class TransactionEntityMapperImpl implements TransactionEntityMapper {
 
     private final DatatypeFactory datatypeFactory;
 
-    public CustomerMapperImpl() {
+    public TransactionEntityMapperImpl() {
         try {
             datatypeFactory = DatatypeFactory.newInstance();
         }
@@ -36,27 +32,28 @@ public class CustomerMapperImpl implements CustomerMapper {
     }
 
     @Override
-    public Customer toModel(CustomerEntity customerEntity) {
-        if ( customerEntity == null ) {
+    public Transaction toModel(TransactionEntity transactionEntity) {
+        if ( transactionEntity == null ) {
             return null;
         }
 
-        Long limit = null;
-        Long balance = null;
+        Long value = null;
+        TransactionTypeEnum type = null;
+        String description = null;
+        LocalDateTime dateTime = null;
 
-        limit = customerEntity.getLimitBalance();
-        balance = customerEntity.getBalance();
-
-        Customer customer = new Customer( balance, limit );
-
-        if ( customer.getTransactions() != null ) {
-            List<Transaction> list = transactionEntityListToTransactionList( customerEntity.getTransactions() );
-            if ( list != null ) {
-                customer.getTransactions().addAll( list );
-            }
+        if ( transactionEntity.getValue() != null ) {
+            value = Long.parseLong( transactionEntity.getValue() );
         }
+        if ( transactionEntity.getType() != null ) {
+            type = Enum.valueOf( TransactionTypeEnum.class, transactionEntity.getType() );
+        }
+        description = transactionEntity.getDescription();
+        dateTime = xmlGregorianCalendarToLocalDateTime( dateToXmlGregorianCalendar( transactionEntity.getDateTime() ) );
 
-        return customer;
+        Transaction transaction = new Transaction( value, type, description, dateTime );
+
+        return transaction;
     }
 
     private XMLGregorianCalendar dateToXmlGregorianCalendar( Date date ) {
@@ -113,42 +110,5 @@ public class CustomerMapperImpl implements CustomerMapper {
             }
         }
         return null;
-    }
-
-    protected Transaction transactionEntityToTransaction(TransactionEntity transactionEntity) {
-        if ( transactionEntity == null ) {
-            return null;
-        }
-
-        Long value = null;
-        TransactionTypeEnum type = null;
-        String description = null;
-        LocalDateTime dateTime = null;
-
-        if ( transactionEntity.getValue() != null ) {
-            value = Long.parseLong( transactionEntity.getValue() );
-        }
-        if ( transactionEntity.getType() != null ) {
-            type = Enum.valueOf( TransactionTypeEnum.class, transactionEntity.getType() );
-        }
-        description = transactionEntity.getDescription();
-        dateTime = xmlGregorianCalendarToLocalDateTime( dateToXmlGregorianCalendar( transactionEntity.getDateTime() ) );
-
-        Transaction transaction = new Transaction( value, type, description, dateTime );
-
-        return transaction;
-    }
-
-    protected List<Transaction> transactionEntityListToTransactionList(List<TransactionEntity> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<Transaction> list1 = new ArrayList<Transaction>( list.size() );
-        for ( TransactionEntity transactionEntity : list ) {
-            list1.add( transactionEntityToTransaction( transactionEntity ) );
-        }
-
-        return list1;
     }
 }
