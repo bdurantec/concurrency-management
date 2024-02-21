@@ -10,8 +10,8 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-17T17:45:45-0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
+    date = "2024-02-20T23:16:33-0300",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Oracle Corporation)"
 )
 public class TransactionMapperImpl implements TransactionMapper {
 
@@ -21,12 +21,14 @@ public class TransactionMapperImpl implements TransactionMapper {
             return null;
         }
 
-        String description = null;
-
-        description = customerTransactionRequest.getDescription();
-
         Long value = null;
         TransactionTypeEnum type = null;
+        String description = null;
+
+        value = customerTransactionRequest.getValue();
+        type = customerTransactionRequest.getType();
+        description = customerTransactionRequest.getDescription();
+
         LocalDateTime dateTime = null;
 
         Transaction transaction = new Transaction( value, type, description, dateTime );

@@ -10,6 +10,7 @@ br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\service\StatementSe
 br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\service\TransactionService.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\model\Balance.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\domain\repository\TransactionRepository.class
+br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\config\DataSourceConfig.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\application\mapper\TransactionMapper.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\infra\repository\CustomerJpaRepository.class
 br\com\bdurantec\rinhadebackend\concurrencymanagement\application\dto\response\BalanceDTO.class

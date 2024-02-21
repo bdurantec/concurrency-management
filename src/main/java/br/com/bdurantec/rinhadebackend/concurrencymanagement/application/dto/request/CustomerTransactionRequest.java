@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -16,20 +15,20 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerTransactionRequest implements Serializable {
-
-  @Serial
-  private static final long serialVersionUID = -5968140534725848734L;
-
-  @JsonProperty("valor")
-  @NotNull
-  private Long valueInCents;
-
-  @JsonProperty("tipo")
-  @NotNull
-  private TransactionTypeEnum transactionType;
-
-  @JsonProperty("descricao")
-  @NotNull
-  @Size(min = 1, max = 10)
-  private String description;
+	
+	@Serial
+	private static final long serialVersionUID = -5968140534725848734L;
+	
+	@JsonProperty("valor")
+	@NotNull
+	private Long value;
+	
+	@JsonProperty("tipo")
+	@NotNull
+	private TransactionTypeEnum type;
+	
+	@JsonProperty("descricao")
+	@NotNull
+	@Size(min = 1, max = 10)
+	private String description;
 }

@@ -15,8 +15,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-17T17:45:45-0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
+    date = "2024-02-20T23:16:34-0300",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Oracle Corporation)"
 )
 public class TransactionEntityMapperImpl implements TransactionEntityMapper {
 
@@ -42,8 +42,12 @@ public class TransactionEntityMapperImpl implements TransactionEntityMapper {
         String description = null;
         LocalDateTime dateTime = null;
 
-        value = transactionEntity.getValue();
-        type = transactionEntity.getType();
+        if ( transactionEntity.getValue() != null ) {
+            value = Long.parseLong( transactionEntity.getValue() );
+        }
+        if ( transactionEntity.getType() != null ) {
+            type = Enum.valueOf( TransactionTypeEnum.class, transactionEntity.getType() );
+        }
         description = transactionEntity.getDescription();
         dateTime = xmlGregorianCalendarToLocalDateTime( dateToXmlGregorianCalendar( transactionEntity.getDateTime() ) );
 
